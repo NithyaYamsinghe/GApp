@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 const AuthContext = React.createContext();
 
 export function useAuth() {
@@ -6,34 +6,32 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  //   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState("");
-  const [familyName, setFamilyName] = useState("");
-  const [givenName, setGivenName] = useState("");
-  const [googleId, setGoogleId] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [familyName, setFamilyName] = useState("");
+  // const [givenName, setGivenName] = useState("");
+  // const [googleId, setGoogleId] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
 
-  function responseGoogle(response) {
-    console.log(response);
-    console.log(response.profileObj);
-    setEmail(response.profileObj.email);
-    setFamilyName(response.profileObj.familyName);
-    setGivenName(response.profileObj.givenName);
-    setGoogleId(response.profileObj.googleId);
-    setImageUrl(response.profileObj.imageUrl);
-  }
+  // function responseGoogle(response) {
+  //   console.log(response);
+  //   console.log(response.profileObj);
+  //   setEmail(response.profileObj.email);
+  //   setFamilyName(response.profileObj.familyName);
+  //   setGivenName(response.profileObj.givenName);
+  //   setGoogleId(response.profileObj.googleId);
+  //   setImageUrl(response.profileObj.imageUrl);
+  // }
 
-  //   useEffect(async () => {
-  //    setLoading(false);
-  //   }, []);
+  // useEffect(async () => {
+  //   console.log(code);
+  // }, []);
 
   const value = {
-    responseGoogle,
-    email,
-    familyName,
-    givenName,
-    googleId,
-    imageUrl,
+    // email,
+    // familyName,
+    // givenName,
+    // googleId,
+    // imageUrl,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
