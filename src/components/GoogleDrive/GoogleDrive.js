@@ -13,7 +13,7 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 
-export default function GDrive() {
+const GoogleDrive = () => {
   return (
     <Grid container spacing={3} rowSpacing={3}>
       <Grid item xs={1}>
@@ -49,4 +49,6 @@ export default function GDrive() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default GoogleDrive;

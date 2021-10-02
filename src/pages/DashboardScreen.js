@@ -164,7 +164,7 @@ export default function MiniDrawer(props) {
 
         <List>
           <Link
-            to="/myaccount"
+            to="/profile"
             style={{ textDecoration: "none", color: "black" }}
           >
             <ListItem button>
