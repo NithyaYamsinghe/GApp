@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.button-style {
+  border: 1px solid blue;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.avatar {
+  height: 110;
+  width: 105;
+  /* flex-shrink: 0;
+  flex-grow: 0;
+  margin-top: 20; */
+}

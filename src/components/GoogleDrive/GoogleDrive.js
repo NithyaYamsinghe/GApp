@@ -7,11 +7,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-import doc from "../media/doc.png";
-import file from "../media/file.png";
-import form from "../media/form.png";
-import presentation from "../media/presentation.png";
-import video from "../media/video.png";
+import doc from "../../media/doc.png";
+// import file from "../../media/file.png";
+// import form from "../../media/form.png";
+// import presentation from "../../media/presentation.png";
+import video from "../../media/video.png";
 
 export default function GDrive() {
   const data = {

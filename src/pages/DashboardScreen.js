@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -10,19 +11,29 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Avatar from "@mui/material/Avatar";
+import { makeStyles } from "@material-ui/core/styles";
+import avatar from "./../media/avatar.jpg";
 
-import { Link } from "react-router-dom";
+const useStyles = makeStyles((theme) => ({
+  avatar: {
+    height: 110,
+    width: 105,
+    flexShrink: 0,
+    flexGrow: 0,
+    marginTop: 20,
+  },
+}));
 
 const drawerWidth = 240;
 
@@ -52,7 +63,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -81,6 +91,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  marginRight: 20,
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -93,6 +104,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer(props) {
   const theme = useTheme();
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -135,7 +147,34 @@ export default function MiniDrawer(props) {
             )}
           </IconButton>
         </DrawerHeader>
-
+        <br />
+        <center>
+          {open && (
+            <Avatar
+              src={avatar}
+              style={{
+                height: "110px",
+                width: "105px",
+              }}
+            />
+          )}
+          {!open && <Avatar src={avatar} />}
+        </center>
+        <br />
+        <Divider />
+        <List>
+          <Link
+            to="/profile"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Profile"} />
+            </ListItem>
+          </Link>
+        </List>
         <Divider />
         <List>
           <Link to="/gdrive" style={{ textDecoration: "none", color: "black" }}>
@@ -146,7 +185,9 @@ export default function MiniDrawer(props) {
               <ListItemText primary={"Drive"} />
             </ListItem>
           </Link>
-
+        </List>
+        <Divider />
+        <List>
           <Link
             to="/contacts"
             style={{ textDecoration: "none", color: "black" }}
@@ -159,25 +200,18 @@ export default function MiniDrawer(props) {
             </ListItem>
           </Link>
         </List>
-
         <Divider />
-
         <List>
-          <Link
-            to="/profile"
-            style={{ textDecoration: "none", color: "black" }}
-          >
+          <Link to="/upload" style={{ textDecoration: "none", color: "black" }}>
             <ListItem button>
               <ListItemIcon>
-                <AccountCircleIcon />
+                <UploadFileIcon />
               </ListItemIcon>
-              <ListItemText primary={"My Account"} />
+              <ListItemText primary={"Upload Files"} />
             </ListItem>
           </Link>
         </List>
-
         <Divider />
-
         <List>
           <Link to="/logout" style={{ textDecoration: "none", color: "black" }}>
             <ListItem button>
@@ -188,8 +222,8 @@ export default function MiniDrawer(props) {
             </ListItem>
           </Link>
         </List>
+        <Divider />
       </Drawer>
-
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         {props.children}
