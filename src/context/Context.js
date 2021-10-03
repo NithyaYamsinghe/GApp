@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import AuthService from "../services/AuthService";
 import GoogleService from "../services/GoogleService";
+import ContactService from "../services/ContactService";
 const AuthContext = React.createContext();
 
 export function useAuth() {
@@ -40,6 +41,12 @@ export function AuthProvider({ children }) {
     return response;
   }
 
+  async function getAllContacts() {
+    const response = await ContactService.getAllContacts(accessToken);
+    console.log(response);
+    return response;
+  }
+
   const value = {
     email,
     name,
@@ -51,6 +58,7 @@ export function AuthProvider({ children }) {
     refreshToken,
     setAuthCode,
     getGoogleDrive,
+    getAllContacts,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
