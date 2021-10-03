@@ -6,6 +6,7 @@ import GoogleDriveScreen from "../pages/GoogleDriveScreen";
 import ContactsScreen from "./../pages/ContactsScreen";
 import ProfileScreen from "./../pages/ProfileScreen";
 import DashboardScreen from "./../pages/DashboardScreen";
+import FileUploadScreen from "./../pages/FileUploadScreen";
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
           <Route exact path="/gdrive" component={GoogleDriveScreen} />
           <Route exact path="/contacts" component={ContactsScreen} />
           <Route exact path="/profile" component={ProfileScreen} />
+          <Route exact path="/upload" component={FileUploadScreen} />
         </DashboardScreen>
       </Switch>
     </React.Fragment>
