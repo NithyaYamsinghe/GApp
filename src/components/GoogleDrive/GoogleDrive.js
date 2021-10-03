@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -17,8 +17,15 @@ import zip from "../../media/zip.png";
 import folder from "../../media/folder.png";
 
 import { DeleteTwoTone, WindowSharp } from "@mui/icons-material";
+import { useAuth } from "./../../context/Context";
 
 export default function GDrive() {
+  const { getGoogleDrive } = useAuth();
+
+  useEffect(async () => {
+    await getGoogleDrive();
+  }, []);
+
   const data = {
     nextPageToken:
       "~!!~AI9FV7SbOSD9BkjvEwA_IbU2B7MRFgp9sxUDMlYz0MPloX4qrG9pW1c2NPWQNFtpbxfrqOrNmPAesI8fcZN5AerfK7vptsphEHldDUZsf11gcYXP6NPtv7H69Q1B8TtTaOdY5Q0ETY6kiCpWeLK7nFlrVO__XC54qT1pUo9WNRUpBZ_a23dlr6ija9HaSeiKnoBAwnKSAYMcE13dDFzfj9RIwQBwVQjw7plOWUtEBMEa1Wk57g2Lc0lsUHbl3QMbgVHNAFn0OtNBUfaE9MeqqY98c3g3bkhVqXyyJPHW8Jo4Zb_lwu6eymQ=",

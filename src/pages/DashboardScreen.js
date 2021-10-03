@@ -24,6 +24,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Avatar from "@mui/material/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import avatar from "./../media/avatar.jpg";
+import { useAuth } from "./../context/Context";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -103,6 +104,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer(props) {
+  const { picture } = useAuth();
   const theme = useTheme();
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -151,14 +153,14 @@ export default function MiniDrawer(props) {
         <center>
           {open && (
             <Avatar
-              src={avatar}
+              src={picture}
               style={{
                 height: "110px",
                 width: "105px",
               }}
             />
           )}
-          {!open && <Avatar src={avatar} />}
+          {!open && <Avatar src={picture} />}
         </center>
         <br />
         <Divider />

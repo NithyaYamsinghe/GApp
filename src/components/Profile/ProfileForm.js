@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from "./../../context/Context";
 import Typography from "@mui/material/Typography";
 import { withStyles } from "@mui/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -55,10 +56,8 @@ const styles = (theme) => ({
 });
 
 const ProfileForm = (props) => {
+  const { email, name, familyName, givenName } = useAuth();
   const { classes, ...rest } = props;
-  const [email, setEmail] = useState("");
-  const [familyName, setFamilyName] = useState("");
-  const [givenName, setGivenName] = useState("");
   const [image, setImage] = useState("");
 
   const handleImageChange = (event) => {
@@ -80,7 +79,7 @@ const ProfileForm = (props) => {
                 gutterBottom
                 variant="h4"
               >
-                Nithya Yamasinghe
+                {name}
               </Typography>
               <Button
                 variant="outlined"
@@ -109,23 +108,31 @@ const ProfileForm = (props) => {
               <Grid item md={6} xs={12}>
                 <TextField
                   fullWidth
-                  label="First name"
+                  label="First Name"
                   margin="dense"
                   name="firstName"
                   variant="outlined"
                   value={givenName}
-                  onChange={setGivenName}
                 />
               </Grid>
               <Grid item md={6} xs={12}>
                 <TextField
                   fullWidth
-                  label="Last name"
+                  label="Last Name"
                   margin="dense"
                   name="lastName"
                   variant="outlined"
                   value={familyName}
-                  onChange={setFamilyName}
+                />
+              </Grid>
+              <Grid item md={6} xs={12}>
+                <TextField
+                  fullWidth
+                  label="Full Name"
+                  margin="dense"
+                  name="name"
+                  variant="outlined"
+                  value={name}
                 />
               </Grid>
 
@@ -137,7 +144,6 @@ const ProfileForm = (props) => {
                   name="email"
                   variant="outlined"
                   value={email}
-                  onChange={setEmail}
                 />
               </Grid>
             </Grid>
@@ -145,6 +151,7 @@ const ProfileForm = (props) => {
           <CardActions />
         </form>
       </Card>
+      <br />
       <Button
         color="primary"
         variant="contained"

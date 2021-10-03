@@ -3,7 +3,7 @@ import ProfileForm from "../components/Profile/ProfileForm";
 import { useAuth } from "./../context/Context";
 
 const ProfileScreen = () => {
-  const { setAuthCode } = useAuth();
+  const { setAuthCode, accessToken, email } = useAuth();
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const code = params.get("code");
