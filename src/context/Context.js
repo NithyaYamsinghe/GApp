@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import AuthService from "../services/AuthService";
 const AuthContext = React.createContext();
 
 export function useAuth() {
@@ -6,6 +7,13 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
+  // set auth code
+  async function setAuthCode(code) {
+    const res = await AuthService.getAuthCode(code);
+    console.log(res);
+    return res;
+  }
+
   // const [email, setEmail] = useState("");
   // const [familyName, setFamilyName] = useState("");
   // const [givenName, setGivenName] = useState("");
@@ -23,7 +31,7 @@ export function AuthProvider({ children }) {
   // }
 
   // useEffect(async () => {
-  //   console.log(code);
+
   // }, []);
 
   const value = {
@@ -32,6 +40,7 @@ export function AuthProvider({ children }) {
     // givenName,
     // googleId,
     // imageUrl,
+    setAuthCode,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -14,7 +14,7 @@ const LoginForm = () => {
         component="div"
       >
         <a
-          href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?redirect_uri=http://localhost:3000/redirect&prompt=consent&response_type=code&client_id=994172784584-j10p790442ks2msidqrseecjtu1lh622.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive&access_type=offline&flowName=GeneralOAuthFlow"
+          href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?redirect_uri=http://localhost:3000/profile&prompt=consent&response_type=code&client_id=410851594897-b3pab1hqinh5p6ojdssorppkhi3jv9nt.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive+https://www.googleapis.com/auth/userinfo.profile+https://www.google.com/m8/feeds/+https://www.googleapis.com/auth/userinfo.email&access_type=offline&flowName=GeneralOAuthFlow"
           target="_blank"
           rel="noreferrer"
         >

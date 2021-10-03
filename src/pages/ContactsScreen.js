@@ -1,10 +1,10 @@
 import React from "react";
-import ContactsList from "./../components/Contacts/ContactsList";
+import ContactsTable from "./../components/Contacts/ContactsTable";
 
 const ContactsScreen = () => {
   return (
     <div>
-      <ContactsList />
+      <ContactsTable />
     </div>
   );
 };
