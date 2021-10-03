@@ -42,7 +42,7 @@ export function AuthProvider({ children }) {
   }
 
   async function getAllContacts() {
-    const response = await ContactService.getAllContacts(accessToken);
+    const response = await ContactService.getAllContacts(accessToken, email);
     console.log(response);
     return response;
   }

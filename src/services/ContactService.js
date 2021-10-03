@@ -1,9 +1,9 @@
 import http from "./HttpService";
 import { contactUrl } from "./../config/Config.json";
 
-const getAllContacts = async (token) => {
+const getAllContacts = async (token, email) => {
   try {
-    const response = await http.get(contactUrl, {
+    const response = await http.get(contactUrl + email + "/full?alt=json", {
       headers: {
         Authorization: "Bearer " + token,
       },
