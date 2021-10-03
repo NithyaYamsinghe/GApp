@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import AuthService from "../services/AuthService";
 import GoogleService from "../services/GoogleService";
 import ContactService from "../services/ContactService";
+import GoogleCommentService from "../services/GoogleCommentService";
 const AuthContext = React.createContext();
 
 export function useAuth() {
@@ -41,6 +42,34 @@ export function AuthProvider({ children }) {
     return response;
   }
 
+  async function deleteGoogleDriveFile(file) {
+    const response = await GoogleService.deleteGoogleDriveFiles(
+      file,
+      accessToken
+    );
+    console.log(response);
+    return response;
+  }
+
+  async function exportGoogleDriveFile(file, mimeType) {
+    const response = await GoogleService.exportGoogleFiles(
+      file,
+      mimeType,
+      accessToken
+    );
+    console.log(response);
+    return response;
+  }
+
+  async function createComment(file, content) {
+    const response = await GoogleCommentService.createGoogleFileComments(
+      file,
+      content,
+      accessToken
+    );
+    return response;
+  }
+
   async function getAllContacts() {
     const response = await ContactService.getAllContacts(accessToken, email);
     console.log(response);
@@ -69,6 +98,9 @@ export function AuthProvider({ children }) {
     getGoogleDrive,
     getAllContacts,
     uploadDriveFile,
+    deleteGoogleDriveFile,
+    exportGoogleDriveFile,
+    createComment,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

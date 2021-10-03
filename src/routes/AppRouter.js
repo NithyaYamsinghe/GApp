@@ -7,6 +7,10 @@ import ContactsScreen from "./../pages/ContactsScreen";
 import ProfileScreen from "./../pages/ProfileScreen";
 import DashboardScreen from "./../pages/DashboardScreen";
 import FileUploadScreen from "./../pages/FileUploadScreen";
+import GoogleDocScreen from "./../pages/GoogleDocScreen";
+import GoogleSheetScreen from "./../pages/GoogleSheetScreen";
+import GoogleSlidesScreen from "./../pages/GoogleSlidesScreen";
+import GoogleFileCommentScreen from "../pages/GoogleFileCommentScreen";
 
 const AppRouter = () => {
   return (
@@ -19,6 +23,22 @@ const AppRouter = () => {
           <Route exact path="/contacts" component={ContactsScreen} />
           <Route exact path="/profile" component={ProfileScreen} />
           <Route exact path="/upload" component={FileUploadScreen} />
+          <Route
+            exact
+            path="/create-comment/:id"
+            component={GoogleFileCommentScreen}
+          />
+          <Route exact path="/create-google-doc" component={GoogleDocScreen} />
+          <Route
+            exact
+            path="/create-google-sheet"
+            component={GoogleSheetScreen}
+          />
+          <Route
+            exact
+            path="/create-google-slides"
+            component={GoogleSlidesScreen}
+          />
         </DashboardScreen>
       </Switch>
     </React.Fragment>
