@@ -3,15 +3,20 @@ import { Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import doc from "../../media/doc.png";
-// import file from "../../media/file.png";
-// import form from "../../media/form.png";
-// import presentation from "../../media/presentation.png";
+import file from "../../media/file.png";
+import form from "../../media/form.png";
+import presentation from "../../media/presentation.png";
 import video from "../../media/video.png";
+import image from "../../media/image.png";
+import xls from "../../media/xls.png";
+import zip from "../../media/zip.png";
+import folder from "../../media/folder.png";
+
+import { DeleteTwoTone, WindowSharp } from "@mui/icons-material";
 
 export default function GDrive() {
   const data = {
@@ -624,27 +629,57 @@ export default function GDrive() {
     ],
   };
 
+  function renderIcon(type) {
+    if (type === "video/mp4") {
+      return <img src={video} width="50" alt="icon" />;
+    } else if (type === "image/jpeg") {
+      return <img src={image} width="50" alt="icon" />;
+    } else if (type === "application/vnd.google-apps.document") {
+      return <img src={doc} width="50" alt="icon" />;
+    } else if (type === "application/vnd.google-apps.form") {
+      return <img src={form} width="50" alt="icon" />;
+    } else if (type === "application/vnd.google-apps.presentation") {
+      return <img src={presentation} width="50" alt="icon" />;
+    } else if (type === "application/x-zip-compressed") {
+      return <img src={zip} width="50" alt="icon" />;
+    } else if (type === "application/vnd.google-apps.spreadsheet") {
+      return <img src={xls} width="50" alt="icon" />;
+    } else if (type === "application/vnd.google-apps.folder") {
+      return <img src={folder} width="50" alt="icon" />;
+    } else {
+      return <img src={file} width="50" alt="icon" />;
+    }
+  }
+
+  function deleteFile(_id) {
+    alert("Deleted: " + _id);
+    window.location.reload();
+  }
+
   return (
-    <Grid container spacing={3} rowSpacing={3}>
+    <Grid container spacing={3} rowSpacing={2}>
       {data.files.map((e, i) => {
         return (
           <Grid item xs={2}>
-            <Card sx={{ maxWidth: 200, maxHeight: 400 }}>
+            <Card sx={{ maxWidth: 200, height: 185 }}>
               <CardContent>
-                {e.mimeType === "video/mp4" && <img src={video} width="50" />}
-                {e.mimeType === "image/jpeg" && <img src={video} width="50" />}
-                {e.mimeType === "application/vnd.google-apps.document" && (
-                  <img src={doc} width="50" />
-                )}
+                {renderIcon(e.mimeType)}
 
-                <Typography variant="body2" color="text.primary">
+                <Typography
+                  variant="body1"
+                  fontSize="13px"
+                  color="text.primary"
+                >
                   {e.name}
                 </Typography>
+                <CardActions style={{ justifyContent: "center" }}>
+                  <Button size="small" onClick={() => deleteFile(e.id)}>
+                    {" "}
+                    <DeleteTwoTone />
+                    Delete File
+                  </Button>
+                </CardActions>
               </CardContent>
-              <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-              </CardActions>
             </Card>
           </Grid>
         );
