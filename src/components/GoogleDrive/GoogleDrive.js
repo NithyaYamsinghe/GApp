@@ -5,7 +5,6 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
 import doc from "../../media/doc.png";
 import file from "../../media/file.png";
 import form from "../../media/form.png";
@@ -15,13 +14,14 @@ import image from "../../media/image.png";
 import xls from "../../media/xls.png";
 import zip from "../../media/zip.png";
 import folder from "../../media/folder.png";
-
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import { DeleteTwoTone } from "@mui/icons-material";
 import { useAuth } from "./../../context/Context";
 
 export default function GDrive() {
   const [data, setData] = useState([]);
-  const { getGoogleDrive } = useAuth();
+  const { getGoogleDrive, deleteGoogleDriveFile, exportGoogleDriveFile } =
+    useAuth();
 
   useEffect(async () => {
     const responseData = await getGoogleDrive();
@@ -50,11 +50,18 @@ export default function GDrive() {
     }
   }
 
-  function deleteFile(_id) {
-    alert("Deleted: " + _id);
-    window.location.reload();
-    console.log(data);
-  }
+  const deleteFile = async (_id) => {
+    await deleteGoogleDriveFile(_id);
+    alert("file deleted");
+  };
+
+  const exportFile = async (_id, mimeType) => {
+    await exportGoogleDriveFile(_id, mimeType);
+  };
+
+  const navigateToAddComment = (_id) => {
+    window.location = `/create-comment/${_id}`;
+  };
 
   return (
     <Grid container spacing={3} rowSpacing={2}>
@@ -74,13 +81,30 @@ export default function GDrive() {
                 </Typography>
                 <CardActions style={{ justifyContent: "center" }}>
                   <Button size="small" onClick={() => deleteFile(e.id)}>
-                    {" "}
                     <DeleteTwoTone />
                     Delete File
                   </Button>
+                  <br />
                 </CardActions>
+                <Button
+                  size="small"
+                  variant="contained"
+                  endIcon={<CloudDownloadIcon />}
+                  onClick={() => exportFile(e.id, e.mimeType)}
+                >
+                  Export
+                </Button>
+                <Button
+                  size="small"
+                  variant="contained"
+                  endIcon={<CloudDownloadIcon />}
+                  onClick={() => navigateToAddComment(e.id)}
+                >
+                  Comment
+                </Button>
               </CardContent>
             </Card>
+            <br />
           </Grid>
         );
       })}

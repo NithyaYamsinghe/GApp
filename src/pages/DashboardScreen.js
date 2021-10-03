@@ -25,6 +25,9 @@ import Avatar from "@mui/material/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import avatar from "./../media/avatar.jpg";
 import { useAuth } from "./../context/Context";
+import DescriptionIcon from "@mui/icons-material/Description";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -210,6 +213,48 @@ export default function MiniDrawer(props) {
                 <UploadFileIcon />
               </ListItemIcon>
               <ListItemText primary={"Upload Files"} />
+            </ListItem>
+          </Link>
+        </List>
+        <Divider />
+        <List>
+          <Link
+            to="/create-google-doc"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <DescriptionIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Create Google Docs"} />
+            </ListItem>
+          </Link>
+        </List>
+        <Divider />
+        <List>
+          <Link
+            to="/create-google-sheet"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <AssessmentIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Create Google Sheets"} />
+            </ListItem>
+          </Link>
+        </List>
+        <Divider />
+        <List>
+          <Link
+            to="/create-google-slides"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <ListItem button>
+              <ListItemIcon>
+                <SlideshowIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Create Google Slides"} />
             </ListItem>
           </Link>
         </List>

@@ -92,7 +92,7 @@ const ProfileForm = (props) => {
               >
                 Upload Photo
               </Button>
-              <input type="file" onChange={handleImageChange} />
+              {/* <input type="file" onChange={handleImageChange} /> */}
             </div>
           </div>
           <div className={classes.progress} />
