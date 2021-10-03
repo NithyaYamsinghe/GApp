@@ -76,6 +76,15 @@ export function AuthProvider({ children }) {
     return response;
   }
 
+  async function uploadDriveFile(formData) {
+    const response = await GoogleService.uploadGoogleDriveFile(
+      accessToken,
+      formData
+    );
+    console.log(response);
+    return response;
+  }
+
   const value = {
     email,
     name,
@@ -88,6 +97,7 @@ export function AuthProvider({ children }) {
     setAuthCode,
     getGoogleDrive,
     getAllContacts,
+    uploadDriveFile,
     deleteGoogleDriveFile,
     exportGoogleDriveFile,
     createComment,

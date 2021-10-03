@@ -1,5 +1,5 @@
 import http from "./HttpService";
-import { apiUrl } from "./../config/Config.json";
+import { apiUrl, fileUploadUrl } from "./../config/Config.json";
 
 const getGoogleDriveFiles = async (token) => {
   try {
@@ -14,7 +14,21 @@ const getGoogleDriveFiles = async (token) => {
   }
 };
 
-const deleteGoogleDriveFiles = async (file, token) => {
+const uploadGoogleDriveFile = async (token, file) => {
+  try {
+    const response = await http.post(fileUploadUrl, file, {
+      headers: {
+        "Content-Type": file.type,
+        Authorization: "Bearer " + token,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+        
+ const deleteGoogleDriveFiles = async (file, token) => {
   try {
     const response = await http.delete(apiUrl + `drive/${file}`, {
       headers: {
@@ -48,4 +62,6 @@ export default {
   getGoogleDriveFiles,
   deleteGoogleDriveFiles,
   exportGoogleFiles,
+   getGoogleDriveFiles,
+  uploadGoogleDriveFilex
 };
