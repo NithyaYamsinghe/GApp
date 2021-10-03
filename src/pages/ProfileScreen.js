@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import ProfileForm from "../components/Profile/ProfileForm";
 import { useAuth } from "./../context/Context";
 
+/**
+ * Profile screen which renders the profile components
+ */
 const ProfileScreen = () => {
   const { setAuthCode, accessToken, email } = useAuth();
   const search = window.location.search;
