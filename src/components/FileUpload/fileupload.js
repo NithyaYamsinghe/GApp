@@ -36,22 +36,7 @@
 //
 // export default function Upload() {
 //     const useStyles = makeStyles((theme) =>
-//         createStyles({
-//             previewChip: {
-//                 minWidth: 160,
-//                 maxWidth: 210,
-//             },
-//         })
-//     );
-//
-//
-//
-//     const classes = useStyles();
-//
-//     return (
-//         <div>
-//             <DropzoneArea
-//                 filesLimit={10}
+
 //                 showPreviews={true}
 //                 showPreviewsInDropzone={false}
 //                 useChipsForPreview
