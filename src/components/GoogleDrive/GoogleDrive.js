@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -20,13 +20,15 @@ import { DeleteTwoTone, WindowSharp } from "@mui/icons-material";
 import { useAuth } from "./../../context/Context";
 
 export default function GDrive() {
+  const [data, setData] = useState([]);
   const { getGoogleDrive } = useAuth();
 
   useEffect(async () => {
-    await getGoogleDrive();
+    const responseData = await getGoogleDrive();
+    setData(responseData.data);
   }, []);
 
-  const data = {
+  const info = {
     nextPageToken:
       "~!!~AI9FV7SbOSD9BkjvEwA_IbU2B7MRFgp9sxUDMlYz0MPloX4qrG9pW1c2NPWQNFtpbxfrqOrNmPAesI8fcZN5AerfK7vptsphEHldDUZsf11gcYXP6NPtv7H69Q1B8TtTaOdY5Q0ETY6kiCpWeLK7nFlrVO__XC54qT1pUo9WNRUpBZ_a23dlr6ija9HaSeiKnoBAwnKSAYMcE13dDFzfj9RIwQBwVQjw7plOWUtEBMEa1Wk57g2Lc0lsUHbl3QMbgVHNAFn0OtNBUfaE9MeqqY98c3g3bkhVqXyyJPHW8Jo4Zb_lwu6eymQ=",
     incompleteSearch: false,
@@ -637,6 +639,7 @@ export default function GDrive() {
   };
 
   function renderIcon(type) {
+    console.log(data);
     if (type === "video/mp4") {
       return <img src={video} width="50" alt="icon" />;
     } else if (type === "image/jpeg") {
@@ -665,7 +668,7 @@ export default function GDrive() {
 
   return (
     <Grid container spacing={3} rowSpacing={2}>
-      {data.files.map((e, i) => {
+      {info.files.map((e, i) => {
         return (
           <Grid item xs={2}>
             <Card sx={{ maxWidth: 200, height: 185 }}>
